@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products; index as i">
+                    <th scope="row">{{ product.id }} </th>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price | number }}</td>
+                    <td>{{ product.qty | number }}</td>
+                    <td (click)="addToOrder(product)">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="icon-plus3  mr-1 border-right pr-1"></i>
+                            Add To Order</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table *ngIf="order != undefined && order.items.length >0" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">PricePerItem</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">ItemTotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of order.items; index as i">
+                    <td>
+                        {{ item.productname }}
+                    </td>
+                    <td>{{ item.priceperitem | number }}</td>
+                    <td><input type="number" min="0" [(ngModel)]="item.qty" style="width: 50px;" (change)="changeItemQty(item)" /></td>
+                    <td>{{ item.itemtotal }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <td>{{ order.total }}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
