@@ -28,15 +28,15 @@ namespace API.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<Product> AddProductAsync(Product product)
+        public async Task<Product> AddProductAsync([FromBody]Product product)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(product));
             var pro = await _unitOfWork.ProductRepository.AddAsync(product);
-            return pro; 
+            return pro;
         }
-        [HttpPut("update")]
-        public async Task<bool> UpdateProductAsync(Product product)
+        [HttpPut("{id}", Name = "update")]
+        public async Task<bool> UpdateProductAsync(Guid id, [FromBody]Product product)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(product));
