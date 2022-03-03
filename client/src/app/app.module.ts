@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { Routes } from '@angular/router';
 import { OrderComponent } from './order/order.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const routes: Routes = [
@@ -30,7 +31,8 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     NgbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
