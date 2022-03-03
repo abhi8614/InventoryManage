@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ProductComponent } from './product/product.component';
 import { Routes } from '@angular/router';
+import { OrderComponent } from './order/order.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -19,11 +21,13 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NavComponent,
-    ProductComponent
+    ProductComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     NgbModule,
     NgxSpinnerModule
