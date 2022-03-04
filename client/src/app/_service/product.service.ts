@@ -20,8 +20,8 @@ export class ProductService {
       .post<IProduct>('https://localhost:7177/api/products/add', product);
   }
 
-  // updateProduct(product: IProduct) {
-  //   return this.http
-  //     .put<IProduct>('',)
-  // }
+  updateProduct(product: IProduct) {
+    return this.http
+      .put<IProduct>('https://localhost:7177/api/products/update', product)
+  }
 }

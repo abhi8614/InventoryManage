@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
       this.products = response;
     })
   }
-  
+
   openAddProductModal() {
     let product: IProduct = {} as IProduct;
     this.isEdit = false;
@@ -37,16 +37,25 @@ export class ProductComponent implements OnInit {
     const config = {
       class: 'modal-dialog-centered',
       initialState: {
-        product,
+        product: JSON.parse(JSON.stringify(product)) as IProduct,
         isEdit: this.isEdit
       }
     }
     this.bsModalRef = this.modalService.show(ProductModalComponent, config);
     this.bsModalRef.content.productUpdated.subscribe(response => {
-      console.log(response);
-      this.productService.addProduct(response as IProduct).subscribe( response =>{
-        console.log(response);
+      this.saveProduct(response as IProduct).subscribe({
+        next: data => {
+          this.isEdit = true;
+          this.loadProducts();
+        },
+        error: error => {
+          console.error('There was an error!', error);
+        }
       });
     })
+  }
+
+  saveProduct(product: IProduct) {
+    return this.isEdit ? this.productService.updateProduct(product) : this.productService.addProduct(product);
   }
 }

@@ -35,8 +35,8 @@ namespace API.Controllers
             var pro = await _unitOfWork.ProductRepository.AddAsync(product);
             return pro;
         }
-        [HttpPut("{id}", Name = "update")]
-        public async Task<bool> UpdateProductAsync(Guid id, [FromBody]Product product)
+        [HttpPut("update")]
+        public async Task<bool> UpdateProductAsync(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException(nameof(product));
