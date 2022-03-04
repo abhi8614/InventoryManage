@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{ isEdit ? 'Edit' : 'Add' }} Product</h4>
+</div>
+<div class="modal-body">
+    <form #productForm="ngForm">
+        <div class="mb-3">
+            <label for="Name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="Name" aria-describedby="emailHelp" [(ngModel)]="product.name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleCostPrice" class="form-label">Cost Price</label>
+            <input type="number" class="form-control" id="exampleCostPrice" [(ngModel)]="product.costPrice" name="costPrice">
+        </div>
+        <div class="mb-3">
+            <label for="exampleSellPrice" class="form-label">Sell Price</label>
+            <input type="number" class="form-control" id="exampleSellPrice" [(ngModel)]="product.sellPrice" name="sellPrice">
+        </div>
+        <div class="mb-3">
+            <label for="exampleQty" class="form-label">Quantity</label>
+            <input type="number" class="form-control" id="exampleQty" [(ngModel)]="product.qty" name="qty">
+        </div>
+        <div class="mb-3">
+            <label for="Image" class="form-label">Image</label>
+            <input type="image" class="form-control" id="Image">
+        </div>
+        
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+    <button type="button" class="btn btn-success" (click)="saveProduct(product)">Save</button>
+</div>
