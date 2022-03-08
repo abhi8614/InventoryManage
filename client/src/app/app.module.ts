@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductModalComponent } from './modals/product-modal/product-modal.component';
 import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -35,7 +36,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     NgbModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

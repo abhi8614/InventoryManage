@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { ProductModalComponent } from '../modals/product-modal/product-modal.component';
 import { IProduct } from '../_models/product';
 import { ProductService } from '../_service/product.service';
@@ -15,7 +16,8 @@ export class ProductComponent implements OnInit {
   products: IProduct[] = [];
   isEdit: boolean = true;
 
-  constructor(public bsModalRef: BsModalRef, private productService: ProductService, private modalService: BsModalService) { }
+  constructor(public bsModalRef: BsModalRef, private productService: ProductService, private modalService: BsModalService, 
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadProducts();
@@ -49,6 +51,7 @@ export class ProductComponent implements OnInit {
           this.loadProducts();
         },
         error: error => {
+          this.toastr.error(error.error)
           console.error('There was an error!', error);
         }
       });
