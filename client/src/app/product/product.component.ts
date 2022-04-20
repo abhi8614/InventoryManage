@@ -45,7 +45,7 @@ export class ProductComponent implements OnInit {
     }
     this.bsModalRef = this.modalService.show(ProductModalComponent, config);
     this.bsModalRef.content.productUpdated.subscribe(response => {
-      this.saveProduct(response as IProduct).subscribe({
+      this.saveProduct(respo as IProduct).subscribe({
         next: data => {
           this.isEdit = true;
           this.loadProducts();
